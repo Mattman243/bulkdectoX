@@ -15,7 +15,7 @@ Function Get-Folder($initialDirectory)
     return $folder
 }
 
-#[String]$Path = 'C:\Scripts\RT\NO_CSR\BIN\labels\*'
+#[String]$Path = 'C:\files\*'
 [String]$Path = Get-Folder
 
 #Select-String will search given files or input for text matching a regex pattern and return objects with the file path, matched value, and line number. Each matched value is a returned object.
