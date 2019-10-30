@@ -21,8 +21,9 @@ Function Get-Folder($initialDirectory)
 #Select-String will search given files or input for text matching a regex pattern and return objects with the file path, matched value, and line number. Each matched value is a returned object.
 #The values are stored in an array and not passed through the pipeline to avoid the file being locked
 $FileMatches = @()
-$FileMatches += Select-String -Path $Path -Pattern "(\d+)" | Select-String -Pattern "nomatchpattern" -NotMatch | Group-Object -Property "Path" #Regex pattern to match contiguous numeric characters
-
+$FileMatches += Select-String -Path $Path -Pattern "(\d+)" -AllMatches | Select-String -Pattern "\/\/" -NotMatch | Group-Object -Property "Path" #Regex pattern to match contiguous numeric characters
+#Regex pattern to match contiguous numeric characters
+#Add patterns to -NotMatch to skip lines and remove -AllMatches if you only care about the first match in a line.
 
 $FileMatches | ForEach-Object -Process {       
     $Content = (Get-Content -Path $_.Name)
