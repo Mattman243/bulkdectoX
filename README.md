@@ -1,2 +1,2 @@
 # bulkdectoX
-convert everything from dec to X
+Convert decimal numbers in all files in the specified directory to HEX or BINARY.
